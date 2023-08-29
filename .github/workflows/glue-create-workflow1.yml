@@ -20,11 +20,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - uses: chill-viking/npm-ci@latest
-      name: Install dependencies
-      with:
-        working_directory: './npm-root-folder/'
-    - run: npm ci
     - name: Install Plugin and Deploy
       uses: serverless/github-action@v3.2
       with:
