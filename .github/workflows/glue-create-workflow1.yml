@@ -24,8 +24,7 @@ jobs:
       - name: serverless deploy
         uses: serverless/github-action@v3.2
         with:
-          args: -c "npx serverless plugin install -n serverless-glue && \
-                    sls deploy"
+          args: -c "npx serverless plugin install -n serverless-glue && serverless deploy"
           entrypoint: /bin/sh
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
