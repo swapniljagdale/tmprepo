@@ -22,7 +22,7 @@ jobs:
       - name: serverless deploy
         uses: serverless/github-action@v3.2
         with:
-          args: -c "cd backend/endpoints && \
+          args: -c "cd tmprepo && \
                     npx serverless plugin install -n serverless-deployment-bucket && \
                     npx serverless plugin install -n serverless-python-requirements && \
                     npx serverless plugin install -n serverless-iam-roles-per-function && \
