@@ -23,10 +23,11 @@ jobs:
         uses: serverless/github-action@v3.2
         with:
           args: -c "npx serverless plugin install -n serverless-deployment-bucket && \
-                    npx serverless plugin install -n serverless-python-requirements && \
-                    npx serverless plugin install -n serverless-iam-roles-per-function && \
-                    npx serverless plugin install -n serverless-offline && \
-                    npx serverless deploy"
+                    serverless plugin install -n serverless-python-requirements && \
+                    serverless plugin install -n serverless-iam-roles-per-function && \
+                    serverless plugin install -n serverless-offline && \
+                    serverless deploy"
           entrypoint: /bin/sh
         env:
-          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
