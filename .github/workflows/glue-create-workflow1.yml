@@ -22,10 +22,7 @@ jobs:
       - name: serverless deploy
         uses: serverless/github-action@v3.2
         with:
-          args: -c "npx serverless plugin install -n serverless-deployment-bucket && \
-                    serverless plugin install -n serverless-python-requirements && \
-                    serverless plugin install -n serverless-iam-roles-per-function && \
-                    serverless plugin install -n serverless-offline && \
+          args: -c "npx serverless plugin install -n serverless-glue && \
                     serverless deploy"
           entrypoint: /bin/sh
         env:
