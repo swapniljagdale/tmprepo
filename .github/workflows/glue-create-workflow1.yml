@@ -22,6 +22,8 @@ jobs:
       #    approvers: swapniljagdale
       # check out action
       - uses: actions/checkout@v3
+        with:
+          path: oasis_nba_medical
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -58,7 +60,7 @@ jobs:
 
       # Copy the file to the S3 bucket
       - name: Upload to S3
-        run: aws s3 cp . s3://swapnil-code-builds/bitbucket/test_cicd/oasis_nba_medical/ --recursive --region ap-south-1
+        run: aws s3 cp oasis_nba_medical/ s3://swapnil-code-builds/bitbucket/test_cicd/oasis_nba_medical/ --recursive --region ap-south-1
       
       - name: serverless deploy
         uses: serverless/github-action@v3.2
