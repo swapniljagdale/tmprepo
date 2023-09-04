@@ -24,13 +24,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: oasis_nba_medical
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - name: list dir
-        run: ls -l
-      - run: npm ci
+
       # Install the AWS CLI
       - name: Install AWS CLI
         run: |
@@ -62,6 +56,17 @@ jobs:
       - name: Upload to S3
         run: aws s3 cp oasis_nba_medical/ s3://swapnil-code-builds/bitbucket/test_cicd/oasis_nba_medical/ --recursive --region ap-south-1
       
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      
+      - name: list dir
+        run: ls -l
+      
+      - run: npm ci
+        working-directory: ./oasis_nba_medical
+            
       - name: serverless deploy
         uses: serverless/github-action@v3.2
         with:
@@ -74,3 +79,4 @@ jobs:
       # Remove stored credentials file
       - name: Cleanup
         run: rm -rf ~/.aws
+        working-directory: ./oasis_nba_medical
